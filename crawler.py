@@ -17,8 +17,7 @@ def main():
                     break
             except Exception:
                 pass
-        items=bs4.BeautifulSoup(resp.text,'html.parser').find_all('img')
-        for item in items:
+        for item in bs4.BeautifulSoup(resp.text,'html.parser').find_all('img'):
             try:
                 urls[item['alt']]=base64.b64encode(item['src'].encode()).decode()
             except KeyError:
